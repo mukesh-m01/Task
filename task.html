@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOGO Offer</title>
+  <style>
+    .line {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    .line::before, .line::after {
+      content: "";
+      flex-grow: 1;
+      border-top: 2px solid #ff5e7e;
+      text-align: center;
+    }
+    .line span {
+      margin: 0 0px;
+      font-size: 1.5em;
+      color: #ff5e7e;
+      font-weight: bold;
+    }
+    .offer-box {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 0;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.1em;
+      
+      background-color: #fff;
+      position: relative;
+      
+    }
+    .offer-box-selected {
+      border-color: #ff5e7e;
+      background-color: #fff7f9;
+      border-width: 2px;
+    }
+    .offer-box .label-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .offer-box .price-container {
+      text-align: right;
+      font-size: 1.2em;
+      color: #333;
+    }
+    .offer-box .revised-price {
+      font-weight: bold;
+      font-size: 0.8em;
+      color: #333;
+    }
+    .offer-box .original-price {
+      color: #999;
+      text-decoration: line-through;
+      font-size: 0.6em;
+    }
+    .offer-box .discount {
+      background-color: #ff5e7e;
+      color: white;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: 0.8em;
+      margin-left: 5px;
+    }
+    .offer-box .popular-label {
+      background-color: #ff5e7e;
+      color: white;
+      padding: 3px 6px;
+      border-radius: 3px;
+      font-size: 0.7em;
+      position: absolute;
+      top: -5px;
+      right: 3px;
+    }
+    .offer-box .unit-select {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .offer-box .unit-select label {
+      margin-top: 5px;
+    }
+    .offer-box .unit-select select {
+      padding: 5px;
+    }
+  </style>
+</head>
+<body style="font-family: Arial, sans-serif; display: flex; justify-content: center; padding: 20px; background-color: #f2f2f2;">
+
+  <div style="background-color: #fff; padding: 40px; border-radius: 8px; width: 400px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    
+    <div class="line"><span>YAY! It's BOGO</span></div>
+    
+    <br>
+
+    <!-- Option 1 -->
+    <div class="offer-box" id="box1">
+      <div class="label-container">
+        <label>
+          <input type="radio" name="unit" value="1" onclick="toggleDropdowns(1)"> 
+          1 Unit <span class="discount">10% Off</span>
+          <div style="font-size: 0.8em; color: #333;">&nbsp; &nbsp; &nbsp; Standard Price</div>
+        </label>
+        <div class="price-container">
+          <div class="revised-price">$10.00 USD</div>
+          <div class="original-price">$24.00 USD</div>
+        </div>
+      </div>
+      <div class="unit-select" id="dropdown1">
+        <div>
+          <p style="font-size: 0.8em; font-weight: bold;"> &nbsp; &nbsp; &nbsp; &nbsp; Size &nbsp; &nbsp; &nbsp; Colour</p>
+          <label>#1 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+          <select>
+            <option>Black</option>
+            <option>White</option>
+          </select>
+        </div>
+        <div style="margin-top: 5px;">
+          <label>#2 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+          <select>
+            <option>Black</option>
+            <option>White</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option 2 (Most Popular) -->
+<div class="offer-box" id="box2">
+      <div class="label-container">
+        <label>
+          <input type="radio" name="unit" value="2" onclick="toggleDropdowns(2)"> 
+          2 Unit <span class="discount">20% Off</span>
+        </label>
+        <div class="popular-label">MOST POPULAR</div>
+        <div class="price-container">
+          <div class="revised-price">$18.00 USD</div>
+          <div class="original-price">$24.00 USD</div>
+        </div>
+      </div>
+      <div class="unit-select" id="dropdown2">
+        <p style="font-size: 0.8em; font-weight: bold;"> &nbsp; &nbsp; &nbsp; &nbsp; Size &nbsp; &nbsp; &nbsp; Colour</p>
+        <div>
+          <label>#1 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+          <select>
+            <option>Black</option>
+            <option>White</option>
+          </select>
+        </div>
+        <div style="margin-top: 5px;">
+          <label>#2 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+          <select>
+            <option>Black</option>
+            <option>White</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option 3 -->
+    <div class="offer-box" id="box3">
+      <div class="label-container">
+        <label>
+          <input type="radio" name="unit" value="3" onclick="toggleDropdowns(3)"> 
+          3 Unit <span class="discount">30% Off</span>
+        </label>
+        <div class="price-container">
+          <div class="revised-price">$24.00 USD</div>
+          <div class="original-price">$24.00 USD</div>
+        </div>
+      </div>
+      <div class="unit-select" id="dropdown3">
+        <p style="font-size: 0.8em; font-weight: bold;"> &nbsp; &nbsp; &nbsp; &nbsp; Size &nbsp; &nbsp; &nbsp; Colour</p>
+        <div>
+          <label>#1 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+          <select>
+            <option>Black</option>
+            <option>White</option>
+          </select>
+        </div>
+        <div style="margin-top: 5px;">
+          <label>#2 </label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+          <select>
+            <option>Black</option>
+            <option>White</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; font-weight: bold; padding: 10px;">
+      <p style="text-align: left; color: #ff5e7e; font-weight: bold; margin: 0;">Free Delivery</p>
+      <span style="text-align: right; font-size: 1.1em;">Total: $18.00 USD</span>
+    </div>
+
+    <button style="width: 100%; background-color: #ff5e7e; color: white; padding: 15px; font-size: 1em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px;">
+      + Add to Cart
+    </button>
+
+    <p style="text-align: center; color: #aaa; font-size: 0.8em; margin-top: 10px; text-align: right;">@ Powered by Pumper</p>
+  </div>
+
+  <script>
+    function toggleDropdowns(option) {
+      // Hide all dropdowns initially
+      document.getElementById('dropdown1').style.display = 'none';
+      document.getElementById('dropdown2').style.display = 'none';
+      document.getElementById('dropdown3').style.display = 'none';
+
+      // Show the dropdown for the selected option
+      document.getElementById('dropdown' + option).style.display = 'block';
+
+      // Reset background for all offer boxes
+      document.getElementById('box1').classList.remove('offer-box-selected');
+      document.getElementById('box2').classList.remove('offer-box-selected');
+      document.getElementById('box3').classList.remove('offer-box-selected');
+
+      // Highlight the selected offer box
+      document.getElementById('box' + option).classList.add('offer-box-selected');
+    }
+  </script>
+
+</body>
+</html>
